@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import firebase from './firebase';
-import "./SignUpForm.css"; 
+import firebase from '../firebase';
+import "./SignUp.css"; 
 
 function SignUpForm() {
     const handleSubmit = (event) => {
