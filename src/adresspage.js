@@ -1,15 +1,22 @@
 import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import "./adresspage.css";
 
 function AddressPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { product } = location.state;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const address = document.getElementById("address").value;
-    alert(`Order placed for ${product.name} to be delivered at ${address}`);
+    const street = document.getElementById("street").value;
+    const city = document.getElementById("city").value;
+    const state = document.getElementById("state").value;
+    const zip = document.getElementById("zip").value;
+
+    const fullAddress = `${address}, ${street}, ${city}, ${state} - ${zip}`;
+    navigate("/payment", { state: { product, address: fullAddress } });
   };
 
   return (
