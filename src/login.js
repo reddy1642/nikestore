@@ -1,13 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import firebase from './firebase';
-import './login.css';
+import { auth } from "./firebase";
+import { signInWithEmailAndPassword } from "firebase/auth"; 
+import { Link, useNavigate } from "react-router-dom"; 
+import "./login.css";
 
 function LoginPage() {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
-    event.preventDefault(); 
-    const username = document.getElementById("username").value;
+    event.preventDefault();
+    const username = document.getElementById("username").value; 
     const password = document.getElementById("password").value;
+
+
+    signInWithEmailAndPassword(auth, username, password)
+      .then((userCredential) => {
+
+        const user = userCredential.user;
+
+        navigate("/product");
+      })
+      .catch((error) => {
+        console.error("Login error:", error.message);
+        alert("Error: " + error.message);
+      });
   };
 
   return (
@@ -25,18 +41,25 @@ function LoginPage() {
         </nav>
       </header>
 
-      
       <div className="login-container">
         <div className="login-box">
           <h2 className="login-title">Login to NikeStore</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <label htmlFor="username">Username</label>
-              <input type="text" id="username" placeholder="Enter your username" />
+              <label For="username">username</label>
+              <input
+                type="name"
+                id="username"
+                placeholder="Enter your username"
+              />
             </div>
             <div className="input-group">
-              <label htmlFor="password">Password</label>
-              <input type="password" id="password" placeholder="Enter your password" />
+              <label For="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+              />
             </div>
             <button type="submit" className="login-button">Login</button>
           </form>
