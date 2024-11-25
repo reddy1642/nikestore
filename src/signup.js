@@ -1,10 +1,13 @@
 import React from "react";
 import { auth, database } from "./firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth"; 
-import { ref, set } from "firebase/database"; 
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { ref, set } from "firebase/database";
+import { useNavigate } from "react-router-dom";
 import "./signup.css";
 
 function SignUpForm() {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const fullname = document.getElementById("fullname").value;
@@ -22,14 +25,13 @@ function SignUpForm() {
       .then((userCredential) => {
         const user = userCredential.user;
 
-      
+
         set(ref(database, "users/" + user.uid), {
           fullname: fullname,
           username: username,
           email: email,
         });
-
-        alert("User registered successfully!");
+        navigate("/");
       })
       .catch((error) => {
         console.error("Error registering user:", error.message);
