@@ -2,7 +2,7 @@ import React from "react";
 import { auth, database } from "./firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "./signup.css";
 
 function SignUpForm() {
@@ -40,6 +40,20 @@ function SignUpForm() {
   };
 
   return (
+    <div>
+    <header>
+    <nav className="navbar">
+      <ul className="nav-list">
+        <li className="nav-item">
+          <Link to="/" className="nav-link">Home</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/support" className="nav-link">Support</Link>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
     <div className="signup-container">
       <h1>Sign Up</h1>
       <form className="signup-form" onSubmit={handleSubmit}>
@@ -79,6 +93,7 @@ function SignUpForm() {
         <button className="top-button">Home</button>
         <button className="top-button">Support</button>
       </div>
+    </div>
     </div>
   );
 }
