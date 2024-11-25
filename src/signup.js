@@ -89,10 +89,9 @@ function SignUpForm() {
           Sign Up
         </button>
       </form>
-      <div className="top-buttons">
-        <button className="top-button">Home</button>
-        <button className="top-button">Support</button>
-      </div>
+      <div className="signin-link">
+            <p>Already a member? <Link to="/login">Login</Link></p>
+          </div>
     </div>
     </div>
   );
