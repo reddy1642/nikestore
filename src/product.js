@@ -1,7 +1,10 @@
 import React from "react";
+import { Link,useNavigate } from "react-router-dom";
 import "./product.css";
 
 function Products() {
+  const navigate = useNavigate();
+
   const products = [
     { id: 1, name: "Nike Air Jordan", price: "$150", image: "/nikeairjordan.jpeg" },
     { id: 2, name: "Nike Air Force", price: "$130", image: "/nikeair1.jpg" },
@@ -19,19 +22,25 @@ function Products() {
     { id: 14, name: "Nike Wildhorse", price: "$95", image: "/wildhorse.jpeg" },
   ];
 
+  const handleOrderNow = (product) => {
+    navigate("/adresspage", { state: { product } }); 
+  };
+
   return (
     <div className="products-container">
       <header className="products-header">
-        <h1>Welcome to the Store</h1>
-        <input
-          type="text"
-          className="explore-input"
-          placeholder="Shop to Explore...."
-        />
+      <nav>
+        <ul>
+          <li>
+            <Link to="/product">Home</Link>
+            <Link to="/orderss">Orders</Link>
+            <Link to="/about">About</Link>
+            <Link to="/support">Support</Link>
+          </li>
+        </ul>
+      </nav>
       </header>
-      <div className="search-bar">
-        <input type="text" className="search-input" placeholder="Search" />
-      </div>
+      <h1>Welcome to the Store</h1>
       <div className="products-grid">
         {products.map((product) => (
           <div className="product-card" key={product.id}>
@@ -42,14 +51,14 @@ function Products() {
               className="product-image"
             />
             <p className="product-price">{product.price}</p>
-            <button className="order-button">Order Now</button>
+            <button
+              className="order-button"
+              onClick={() => handleOrderNow(product)}
+            >
+              Order Now
+            </button>
           </div>
         ))}
-      </div>
-      <div className="top-buttons">
-        <button className="nav-button">Home</button>
-        <button className="nav-button">Support</button>
-        <button className="nav-button">Profile</button>
       </div>
     </div>
   );

@@ -9,15 +9,11 @@ function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const username = document.getElementById("username").value; 
+    const email = document.getElementById("username").value; 
     const password = document.getElementById("password").value;
 
-
-    signInWithEmailAndPassword(auth, username, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-
-        const user = userCredential.user;
-
         navigate("/product");
       })
       .catch((error) => {
@@ -27,46 +23,42 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <header>
-        <nav className="navbar">
-          <ul className="nav-list">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/support" className="nav-link">Support</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
+    <div className="login-page">
+      <nav className="navbar">
+        <ul className="nav-list">
+          <li className="nav-item">
+            <Link to="/" className="nav-link">Home</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/support" className="nav-link">Support</Link>
+          </li>
+        </ul>
+      </nav>
 
-      <div className="login-container">
-        <div className="login-box">
-          <h2 className="login-title">Login to NikeStore</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="input-group">
-              <label For="username">username</label>
-              <input
-                type="name"
-                id="username"
-                placeholder="Enter your username"
-              />
-            </div>
-            <div className="input-group">
-              <label For="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-              />
-            </div>
-            <button type="submit" className="login-button">Login</button>
-          </form>
-          <div className="signup-link">
-            <p>Not a member?</p>
-            <Link to="/signup">Sign Up</Link>
+      <div className="login-box">
+        <h2 className="login-title">Login to NikeStore</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="username">Email</label>
+            <input
+              type="email"
+              id="username"
+              placeholder="Enter your email"
+            />
           </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+            />
+          </div>
+          <button type="submit" className="login-button">Login</button>
+        </form>
+        <div className="signup-link">
+          <p>Not a member?</p>
+          <Link to="/signup">Sign Up</Link>
         </div>
       </div>
     </div>
