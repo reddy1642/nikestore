@@ -1,56 +1,77 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import firebase from '../firebase';
-import "./SignUp.css"; 
+import { auth, database } from "./firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth"; 
+import { ref, set } from "firebase/database"; 
+import "./signup.css";
 
 function SignUpForm() {
-    const handleSubmit = (event) => {
-        event.preventDefault(); 
-        const fullname = document.getElementById("fullname").value;
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const repassword = document.getElementById("repassword").value;
-        if (password !== repassword) {
-          alert("Passwords do not match");
-          return;
-        }
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            
-            const user = userCredential.user;
-        
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-          
-          });
-      };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const fullname = document.getElementById("fullname").value;
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const repassword = document.getElementById("repassword").value;
+
+    if (password !== repassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+      
+        set(ref(database, "users/" + user.uid), {
+          fullname: fullname,
+          username: username,
+          email: email,
+        });
+
+        alert("User registered successfully!");
+      })
+      .catch((error) => {
+        console.error("Error registering user:", error.message);
+        alert("Error: " + error.message);
+      });
+  };
+
   return (
     <div className="signup-container">
-      <h1>Sign Up ...</h1>
-      <form className="signup-form">
-        <div className="form-group">
-          <input type="email" placeholder="Enter your email" />
-        </div>
+      <h1>Sign Up</h1>
+      <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Full Name:</label>
-          <input type="text" placeholder="Enter your full name" />
+          <input type="text" id="fullname" placeholder="Enter your full name" />
         </div>
         <div className="form-group">
           <label>Username:</label>
-          <input type="text" placeholder="Enter your username" />
+          <input type="text" id="username" placeholder="Enter your username" />
+        </div>
+        <div className="form-group">
+          <label>Email:</label>
+          <input type="email" id="email" placeholder="Enter your email" />
         </div>
         <div className="form-group">
           <label>Password:</label>
-          <input type="password" placeholder="Enter your password" />
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+          />
         </div>
         <div className="form-group">
           <label>Re-enter Password:</label>
-          <input type="password" placeholder="Re-enter your password" />
+          <input
+            type="password"
+            id="repassword"
+            placeholder="Re-enter your password"
+          />
         </div>
-        <button type="submit" className="signup-button">Sign Up</button>
+        <button type="submit" className="signup-button">
+          Sign Up
+        </button>
       </form>
       <div className="top-buttons">
         <button className="top-button">Home</button>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Product.css"; 
+import "./product.css"; 
 
 function Products() {
   const products = [
