@@ -6,7 +6,7 @@ import Products from "./product";
 import AddressPage from "./adresspage";
 import PaymentPage from "./payment";
 import OrdersPage from "./orders";
-import AboutPage from "./about";
+import aboutPage from "./about";
 
 function App() {
   return (
