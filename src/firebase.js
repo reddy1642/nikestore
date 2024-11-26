@@ -1,7 +1,6 @@
-
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref, set, get, child, push } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDE3Ca-a-MlOD7i7C_IQgI-vadPSBP3JsY",
@@ -14,8 +13,9 @@ const firebaseConfig = {
   databaseURL: "https://nikestore-7589c-default-rtdb.firebaseio.com/",
 };
 
-
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const database = getDatabase(app);
+
+export { ref, set, get, child, push };

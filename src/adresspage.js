@@ -58,7 +58,7 @@ function AddressPage() {
           <label htmlFor="zip">Zip Code:</label>
           <input type="text" id="zip" placeholder="Enter your zip code" required />
 
-          <button type="submit" className="submit-button">Place Order</button>
+          <button type="submit" className="submit-button">Proceed to Checkout</button>
         </form>
       </div>
     </div>
