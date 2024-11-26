@@ -7,6 +7,7 @@ import AddressPage from "./adresspage";
 import PaymentPage from "./payment";
 import OrdersPage from "./orders";
 import aboutPage from "./about";
+import ContactPage from "./contact";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/about" element={<aboutPage/>} /> 
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Router>
   );
