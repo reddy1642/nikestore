@@ -6,20 +6,20 @@ function Products() {
   const navigate = useNavigate();
 
   const products = [
-    { id: 1, name: "Nike Air Jordan", price: "$150", image: "/nikeairjordan.jpeg" },
-    { id: 2, name: "Nike Air Force", price: "$130", image: "/nikeair1.jpg" },
-    { id: 3, name: "Nike Air Force1", price: "$120", image: "/nikeair2.jpg" },
-    { id: 4, name: "Nike Uptempo 1", price: "$140", image: "/nikeuptempo.jpeg" },
+    { id: 1, name: "Flip flops", price: "$60", image: "/flipflop.jpg" },
+    { id: 2, name: "Hoodie", price: "$100", image: "/hoodie.jpg" },
+    { id: 3, name: "Jacket", price: "$120", image: "/jacket.jpg" },
+    { id: 4, name: "Jeans", price: "$140", image: "/jeans.jpg" },
     { id: 5, name: "Nike Uptempo 2", price: "$145", image: "/nikeuptempo3.jpeg" },
-    { id: 6, name: "Nike Uptempo 3", price: "$155", image: "/nikeuptempo2.jpeg" },
-    { id: 7, name: "Nike Pegasus", price: "$125", image: "/nikepeagasus.jpeg" },
-    { id: 8, name: "Nike Zoom Fly", price: "$135", image: "/nike zoomfly.jpeg" },
-    { id: 9, name: "Nike React Infinity", price: "$160", image: "/nikereact.jpeg" },
-    { id: 10, name: "Nike Free Run", price: "$110", image: "/nikefree.jpeg" },
-    { id: 11, name: "Nike VaporMax", price: "$180", image: "/nikevapour.jpeg" },
-    { id: 12, name: "Nike Metcon", price: "$100", image: "/nikemetcon.jpeg" },
-    { id: 13, name: "Nike ZoomX", price: "$200", image: "/zoomx.jpeg" },
-    { id: 14, name: "Nike Wildhorse", price: "$95", image: "/wildhorse.jpeg" },
+    { id: 6, name: "Kids Wear", price: "$155", image: "/kidsdresswomen.jpg" },
+    { id: 7, name: "Kids Tshirt", price: "$125", image: "/kidstshirt.jpg" },
+    { id: 8, name: "Men Shirt", price: "$135", image: "/menshirt.jpg" },
+    { id: 9, name: "Shoes", price: "$160", image: "/shoes.jpg" },
+    { id: 10, name: "Travel bag", price: "$110", image: "/travelbag.jpg" },
+    { id: 11, name: "Trouser", price: "$180", image: "/troser.jpg" },
+    { id: 12, name: "Tshirt", price: "$100", image: "/tshirt.jpg" },
+    { id: 13, name: "Watch", price: "$200", image: "/watch.jpg" },
+    { id: 14, name: "Winter Jacket", price: "$95", image: "/winterjacket.jpg" },
   ];
 
   const handleOrderNow = (product) => {
@@ -33,9 +33,10 @@ function Products() {
         <ul>
           <li>
             <Link to="/product">Home</Link>
-            <Link to="/orderss">Orders</Link>
+            <Link to="/orders">Orders</Link>
             <Link to="/about">About</Link>
-            <Link to="/support">Support</Link>
+            <Link to="/contact">Support</Link>
+            <Link to="/login">Signout</Link>
           </li>
         </ul>
       </nav>

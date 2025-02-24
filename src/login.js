@@ -30,7 +30,7 @@ function LoginPage() {
             <Link to="/" className="nav-link">Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/support" className="nav-link">Support</Link>
+            <Link to="/contact" className="nav-link">Support</Link>
           </li>
         </ul>
       </nav>

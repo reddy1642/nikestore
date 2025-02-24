@@ -35,19 +35,11 @@
   
   
   .about-header nav ul li a:hover {
-    background-color: #f39c12;  
-    color: white;
+    background-color: white;  
+    color: black;
   }
   
-  .about-header nav ul li a.active {
-    background-color: #f39c12;  
-    color: white;
-  }
-  
-  .about-header nav ul li a:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #f39c12; 
-  }
+
   
   
   .about-content {
@@ -79,7 +71,8 @@
   }
   
   .about-content a {
-    color: #f39c12;
+    color: black;
+    text-decoration: underline;
     text-decoration: none;
   }
   

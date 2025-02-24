@@ -11,7 +11,6 @@ function ContactPage() {
 
   const [formStatus, setFormStatus] = useState(null);
 
- 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -20,18 +19,38 @@ function ContactPage() {
     }));
   };
 
- 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
- 
+
     if (formData.name && formData.email && formData.message) {
-      setFormStatus('Message sent successfully!');
+      setFormStatus('Sending message...');
+
       
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/rajugaddam5333@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+          setFormStatus('Message sent successfully!');
+        } else {
+          setFormStatus('Something went wrong, please try again.');
+        }
+
+        
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+      } catch (error) {
+        console.error('Error sending message:', error);
+        setFormStatus('Failed to send message. Please try again.');
+      }
     } else {
       setFormStatus('Please fill out all fields!');
     }
@@ -46,8 +65,8 @@ function ContactPage() {
               <Link to="/product">Home</Link>
               <Link to="/orders">Orders</Link>
               <Link to="/about">About</Link>
-              <Link to="/support">Support</Link>
-              <Link to="/contact" className="active">Contact</Link>
+              <Link to="/contact">Support</Link>
+              <Link to="/login">Signout</Link>
             </li>
           </ul>
         </nav>
@@ -58,7 +77,7 @@ function ContactPage() {
         <p>If you have any questions or concerns, feel free to reach out to us by filling out the form below.</p>
 
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="contact-form">
             <label htmlFor="name">Name</label>
             <input 
               type="text" 

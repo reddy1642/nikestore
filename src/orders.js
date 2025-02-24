@@ -1,63 +1,64 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ref, get } from "firebase/database";
-import { database } from "./firebase";
-import "./orders.css";
+import React, { useEffect, useState } from 'react';
+import { getDatabase, ref, onValue } from "firebase/database";
+import { auth } from './firebase'; 
+import { Link } from 'react-router-dom';
 
-function OrdersPage() {
+const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
-
+  
   useEffect(() => {
-    const ordersRef = ref(database, "orders");
+    const db = getDatabase();
+    const ordersRef = ref(db, 'orders');
     
-    get(ordersRef).then((snapshot) => {
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-        const ordersList = Object.keys(data).map((key) => ({
-          id: key,
-          ...data[key],
-        }));
-        setOrders(ordersList);
-      } else {
-        console.log("No orders found");
+
+    onValue(ordersRef, (snapshot) => {
+      const data = snapshot.val();
+      const userOrders = [];
+      
+      
+      for (let id in data) {
+        if (data[id].userId === auth.currentUser?.uid) {
+          userOrders.push(data[id]);
+        }
       }
-    }).catch((error) => {
-      console.error("Error fetching orders:", error);
+
+      setOrders(userOrders);
     });
   }, []);
 
   return (
-
-    <div className="orders-page">
-        <header className="orders-header">
+    <div>
+      <header className="products-header">
         <nav>
           <ul>
             <li>
               <Link to="/product">Home</Link>
               <Link to="/orders">Orders</Link>
               <Link to="/about">About</Link>
-              <Link to="/support">Support</Link>
+              <Link to="/contact">Support</Link>
+              <Link to="/login">Signout</Link>
             </li>
           </ul>
         </nav>
       </header>
       <h1>Your Orders</h1>
-      {orders.length === 0 ? (
-        <p>No orders found</p>
-      ) : (
-        <ul>
-          {orders.map((order) => (
-            <li key={order.id}>
-              <h3>{order.product.name}</h3>
-              <p><strong>Price:</strong> {order.product.price}</p>
-              <p><strong>Address:</strong> {order.address}</p>
-              <p><strong>Date:</strong> {order.date}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div>
+        {orders.length === 0 ? (
+          <p>No orders found</p>
+        ) : (
+          orders.map((order, index) => (
+            <div key={index} className="order">
+              <h2>{order.productName}</h2>
+              <img src={order.productImage} alt={order.productName} />
+              <p>Price: {order.productPrice}</p>
+              <p>Shipping Address: {order.shippingAddress}</p>
+              <p>Date: {new Date(order.date).toLocaleString()}</p>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default OrdersPage;

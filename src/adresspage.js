@@ -16,7 +16,7 @@ function AddressPage() {
     const zip = document.getElementById("zip").value;
 
     const fullAddress = `${address}, ${street}, ${city}, ${state} - ${zip}`;
-    navigate("/payment", { state: { product, address: fullAddress } });
+    navigate("/stripecheckoutform", { state: { product, address: fullAddress } });
   };
 
   return (
@@ -29,6 +29,7 @@ function AddressPage() {
               <Link to="/orders">Orders</Link>
               <Link to="/about">About</Link>
               <Link to="/support">Support</Link>
+              <Link to="/login">Signout</Link>
             </li>
           </ul>
         </nav>

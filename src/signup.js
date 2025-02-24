@@ -48,7 +48,7 @@ function SignUpForm() {
           <Link to="/" className="nav-link">Home</Link>
         </li>
         <li className="nav-item">
-          <Link to="/support" className="nav-link">Support</Link>
+          <Link to="/contact" className="nav-link">Support</Link>
         </li>
       </ul>
     </nav>
@@ -57,19 +57,19 @@ function SignUpForm() {
     <div className="signup-container">
       <h1>Sign Up</h1>
       <form className="signup-form" onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="formgroup">
           <label>Full Name:</label>
           <input type="text" id="fullname" placeholder="Enter your full name" />
         </div>
-        <div className="form-group">
+        <div className="formgroup">
           <label>Username:</label>
           <input type="text" id="username" placeholder="Enter your username" />
         </div>
-        <div className="form-group">
+        <div className="formgroup">
           <label>Email:</label>
           <input type="email" id="email" placeholder="Enter your email" />
         </div>
-        <div className="form-group">
+        <div className="formgroup">
           <label>Password:</label>
           <input
             type="password"
@@ -77,7 +77,7 @@ function SignUpForm() {
             placeholder="Enter your password"
           />
         </div>
-        <div className="form-group">
+        <div className="formgroup">
           <label>Re-enter Password:</label>
           <input
             type="password"

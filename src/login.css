@@ -64,7 +64,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* Input Fields */
+
 .input-group {
   margin-bottom: 20px;
   text-align: left;
@@ -87,16 +87,15 @@ input {
 }
 
 input:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  border-color: black;
+  outline: none;;
 }
 
-/* Login Button */
+
 .login-button {
   width: 100%;
   padding: 12px;
-  background-color: #007bff;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 5px;
@@ -107,7 +106,8 @@ input:focus {
 }
 
 .login-button:hover {
-  background-color: #0056b3;
+  background-color: black;
+  color: white;
 }
 
 
@@ -122,7 +122,7 @@ input:focus {
 }
 
 .signup-link a {
-  color: #007bff;
+  color: black;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;

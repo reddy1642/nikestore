@@ -3,14 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getDatabase, ref, set, get, child, push } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDE3Ca-a-MlOD7i7C_IQgI-vadPSBP3JsY",
-  authDomain: "nikestore-7589c.firebaseapp.com",
-  projectId: "nikestore-7589c",
-  storageBucket: "nikestore-7589c.appspot.com",
-  messagingSenderId: "401471293058",
-  appId: "1:401471293058:web:c966f9dce57e56474e169b",
-  measurementId: "G-CYWNKHX35M",
-  databaseURL: "https://nikestore-7589c-default-rtdb.firebaseio.com/",
+  apiKey: "AIzaSyAWNrwLfyQXwvTBP5aSFLIifGxxGFmXrhM",
+  authDomain: "fir-26f00.firebaseapp.com",
+  projectId: "fir-26f00",
+  storageBucket: "fir-26f00.firebasestorage.app",
+  messagingSenderId: "140884545234",
+  appId: "1:140884545234:web:5ff72e1b1e5e45155a670b",
+  measurementId: "G-6C1SJ37R54"
 };
 
 const app = initializeApp(firebaseConfig);

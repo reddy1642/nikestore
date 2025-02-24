@@ -59,8 +59,8 @@ body {
     margin-bottom: 5px;
   }
   
-  .form-group input {
-    width: 300px;
+  .formgroup input {
+    width: 80%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
